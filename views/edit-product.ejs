@@ -1,0 +1,82 @@
+<%-include('includes/header.ejs')%>
+<%-include('includes/navbar.ejs')%>
+
+<body>
+    <div>
+        <div class="row">
+            <div class="col-lg-12 p-4 rounded bg-info text-white shadow-lg">
+                <h1>Add a New Product</h1>
+    
+                <form method="POST" action="/admin/<%if(editing){%>edit-product<%}else{%>add-product<%}%>">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label for="category">1 Category Name:</label>
+                                <input type="text" class="form-control" name="productCategory">
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="name">2 Product Name:</label>
+                                <input type="text" class="form-control" name="name">
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="price">3 Purchase Price:</label>
+                                <input type="number" class="form-control" name="purchasingPrice">
+                            </div>
+    
+                            <div class="form-group">
+                                <label for="price">4 Selling Price:</label>
+                                <input type="number" class="form-control" name="sellingPrice">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="price">5 Product Quantity</label>
+                                <input type="number" class="form-control" name="productQuantity">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">6 Product Image:</label>
+                                <input type="text" class="form-control" name="productImage">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">7 Product Colour</label>
+                                <select class="form-select" aria-label="Default select example" name="productColour">
+                                    <option selected>Color options</option>
+                                    <option value="red">Red</option>
+                                    <option value="blue">Blue</option>
+                                    <option value="green">Green</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="name">8 Product Description</label>
+                                <textarea type="text" class="form-control" name="productDescription"></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="productFeature" class="form-group">9 Product Feature</label>
+                                <br>    
+                                <label for="featureName">Feature Name</label><br>
+                                    <input  type="text" name="featureName" ><br>
+                                    <label for="featureValue">Feature Value</label><br>
+                                    <input type="text" name="featureValue"><br>
+                                    <br>
+                            </div>
+
+                            <div class="form-check" >
+                                <label for="name">10 Product Status</label>
+                                <div class="checkbox">
+                                    <label><input name="productStatus" type="checkbox" value="available">Available</label>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
+    </html>
