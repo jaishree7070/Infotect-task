@@ -59,9 +59,9 @@
                                 <label for="productFeature" class="form-group">9 Product Feature</label>
                                 <br>    
                                 <label for="featureName">Feature Name</label><br>
-                                    <input  type="text" name="featureName" value="<% if (editing) { %><%= product.productFeatures[0].productName %><% } %>"><br>
+                                    <input  type="text" name="featureName" value="<% if (editing) { %><%= product.productFeatures.productName %><% } %>"><br>
                                     <label for="featureValue" >Feature Value</label><br>
-                                    <input type="text" name="featureValue" value="<% if (editing) { %><%= product.productFeatures[0].featureValue %><% } %>"><br>
+                                    <input type="text" name="featureValue" value="<% if (editing) { %><%= product.productFeatures.featureValue %><% } %>"><br>
                                     <br>
                             </div>
                             <div class="form-check" >

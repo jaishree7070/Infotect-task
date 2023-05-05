@@ -1,33 +1,5 @@
 <%-include('includes/header.ejs')%> <%-include('includes/navbar.ejs')%>
 <div>
-  <!-- // <div class="row"> -->
-
-  <!-- <% prods.forEach(function(prod){ %>
-  <div class="card col-lg-4 col-md-6 card">
-    <img
-      alt="productImage"
-      src="<%=prod.productImage%>"
-    />
-    <h1><%=prod.name%></h1>
-    <h3><%=prod.productCategory%></h3>
-    <h6><%=prod.sellingPrice%></h6>
-    <h6><%=prod.productQuantity%></h6>
-    <h6><%=prod.productColour%></h6>
-    <p><%=prod.productDescription%></p>
-    <h6><%=prod.productFeatures[0].featureName%></h6>
-    <h6><%=prod.productFeatures[0].featureValue%></h6>
-    <h6><%=prod.productStatus%></h6>   
-    <form action="/admin/edit/:<%=prod._id%>" method="post">                            
-      <button type="submit">Edit</button>    
-      <input type="hidden" name="productId" value="<%=prod._id%>">        
-    </form>
-    </div>
-    <form action="/admin/delete" method="post">          
-      <input type="hidden" name="productId" value="<%=prod._id%>">                          
-      <button type="submit">delete</button>            
-    </form>   
-  </div
-  <% }) %> -->
   <div class="container">
     <div class="row card-deck container">
       <% prods.forEach(function(prod){ %>
@@ -47,13 +19,14 @@
             <h6>Product Color--> <%=prod.productColour%></h6>
             <h6>Description--><%=prod.productDescription%></h6>
             <h6>
-              Product Feature--> <%=prod.productFeatures[0].featureName%> :
-              <%=prod.productFeatures[0].featureValue%>
+              Product Feature--> <%=prod.productFeatures.featureName%> :
+              <%=prod.productFeatures.featureValue%>
             </h6>
             <h6>Status--><%=prod.productStatus%></h6>
             <div>
               <form action="/admin/delete" method="POST">
-                <input type="hidden" value="<%= prod._id %>" name="productId" />              <a href="/admin/edit-product/<%=prod._id%>?edit=true" class="btn"
+                <input type="hidden" value="<%= prod._id %>" name="productId" />              
+                <a href="/admin/edit-product/<%=prod._id%>?edit=true" class="btn"
                   >Edit</a
                 >
                 <button class="btn" type="submit">Delete</button>

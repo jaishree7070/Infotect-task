@@ -36,12 +36,12 @@ const productSchema = new Schema({
     type: String,
     required: true,
   },
-  productFeatures: [
+  productFeatures:
     {
       featureName: String,
       featureValue: String,
-    },
-  ],
+    }
+  ,
   productStatus: {
     type: String,
     required: true,
