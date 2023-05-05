@@ -36,7 +36,6 @@ exports.postAddProduct = (req, res, next) => {
   product
     .save()
     .then((result) => {
-      console.log(result);
       console.log("Created Product");
       res.redirect("/admin/products");
     })
@@ -50,7 +49,7 @@ exports.getEditProduct = (req, res, next) => {
   if (!editMode) {
     return res.redirect("/");
   }
-  const prodId = req.params.productId;
+  const prodId = req.params.pid;
   Product.findById(prodId)
     .then((product) => {
       if (!product) {
@@ -61,6 +60,7 @@ exports.getEditProduct = (req, res, next) => {
         path: "/admin/edit-product",
         editing: editMode,
         product: product,
+        productId: prodId
       });
     })
     .catch((err) => console.log(err));
@@ -77,20 +77,19 @@ exports.postEditProduct = (req, res, next) => {
     const uproductDescription = req.body.productDescription;
     const ufeatureValue = req.body.featureValue;
     const uproductStatus = req.body.productStatus;
-
+    const prodId = req.body.productId;
   Product.findById(prodId)
     .then((product) => {
-;
-      productCategory=uproductCategory,
-      name=uname,
-      purchasingPrice=upurchasingPrice,
-      sellingPrice=usellingPrice
-      productQuantity=uproductQuantity,
-      productImage=uproductImage,
-      productColour=uproductColour,
-      productDescription=uproductDescription,
-      productFeatures= [{ ufeatureName:ufeatureValue }],
-      productStatus=uproductStatus
+      product.productCategory=uproductCategory,
+      product.name=uname,
+      product.purchasingPrice=upurchasingPrice,
+      product.sellingPrice=usellingPrice
+      product.productQuantity=uproductQuantity,
+      product.productImage=uproductImage,
+      product.productColour=uproductColour,
+      product.productDescription=uproductDescription,
+      product.productFeatures= [{ ufeatureName:ufeatureValue }],
+      product.productStatus=uproductStatus
       return product.save();
     })
     .then((result) => {
@@ -103,7 +102,6 @@ exports.postEditProduct = (req, res, next) => {
 exports.getProducts = (req, res, next) => {
   Product.find()
     .then((products) => {
-      console.log(products);
       res.render("products", {
         prods: products,
         pageTitle: "Admin Products",

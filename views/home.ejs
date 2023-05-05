@@ -1,0 +1,32 @@
+<%-include('includes/header.ejs')%> <%-include('includes/navbar.ejs')%>
+<div>
+  <div class="container">
+    <div class="row card-deck">
+      <% prods.forEach(function(prod){ %>
+      <div class="col-md-4">
+        <div class="card">
+          <img
+            class="card-image-top"
+            src="<%=prod.productImage%>"
+            style="width: 100%; height: 350px"
+          />
+          <div class="card-body">
+            <h3 class="card-title"><u><%=prod.name%></u></h3>
+            <h5>Category--><%=prod.productCategory%></h5>
+            <h6>Selling Price--><%=prod.sellingPrice%></h6>
+            <h6>Purhasing Price--><%=prod.purhasingPrice%></h6>
+            <h6>Purchasing Quantity--><%=prod.productQuantity%></h6>
+            <h6>Product Color--> <%=prod.productColour%></h6>
+            <h6>Description--><%=prod.productDescription%></h6>
+            <h6>
+              Product Feature--> <%=prod.productFeatures[0].featureName%> :
+              <%=prod.productFeatures[0].featureValue%>
+            </h6>
+            <h6>Status--><%=prod.productStatus%></h6>
+          </div>
+        </div>
+      </div>
+      <% }) %>
+    </div>
+  </div>
+</div>

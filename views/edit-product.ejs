@@ -3,46 +3,46 @@
 
 <body>
     <div>
-        <div class="row">
-            <div class="col-lg-12 p-4 rounded bg-info text-white shadow-lg">
-                <h1>Add a New Product</h1>
+        <div class="row ">
+            <div class="col-lg-12 p-4 rounded bg-info text-white shadow-lg container d-flex p-2 bd-highlight">
+                <h1 class="m-3 p-4">Add a New Product</h1>
     
                 <form method="POST" action="/admin/<%if(editing){%>edit-product<%}else{%>add-product<%}%>">
                     <div class="panel panel-default">
                         <div class="panel-body">
                             <div class="form-group">
                                 <label for="category">1 Category Name:</label>
-                                <input type="text" class="form-control" name="productCategory">
+                                <input type="text" class="form-control" name="productCategory" value="<% if (editing) { %><%= product.productCategory %><% } %>">
                             </div>
     
                             <div class="form-group">
                                 <label for="name">2 Product Name:</label>
-                                <input type="text" class="form-control" name="name">
+                                <input type="text" class="form-control" name="name" value="<% if (editing) { %><%= product.name %><% } %>">
                             </div>
     
                             <div class="form-group">
                                 <label for="price">3 Purchase Price:</label>
-                                <input type="number" class="form-control" name="purchasingPrice">
+                                <input type="number" class="form-control" name="purchasingPrice" value="<% if (editing) { %><%= product.purchasingPrice %><% } %>">
                             </div>
     
                             <div class="form-group">
                                 <label for="price">4 Selling Price:</label>
-                                <input type="number" class="form-control" name="sellingPrice">
+                                <input type="number" class="form-control" name="sellingPrice" value="<% if (editing) { %><%= product.sellingPrice %><% } %>">
                             </div>
 
                             <div class="form-group">
                                 <label for="price">5 Product Quantity</label>
-                                <input type="number" class="form-control" name="productQuantity">
+                                <input type="number" class="form-control" name="productQuantity" value="<% if (editing) { %><%= product.productQuantity %><% } %>">
                             </div>
 
                             <div class="form-group">
                                 <label for="name">6 Product Image:</label>
-                                <input type="text" class="form-control" name="productImage">
+                                <input type="text" class="form-control" name="productImage" value="<% if (editing) { %><%= product.productImage %><% } %>">
                             </div>
 
                             <div class="form-group">
                                 <label for="name">7 Product Colour</label>
-                                <select class="form-select" aria-label="Default select example" name="productColour">
+                                <select class="form-select" aria-label="Default select example" name="productColour" value="<% if (editing) { %><%= product.productColour %><% } %>">
                                     <option selected>Color options</option>
                                     <option value="red">Red</option>
                                     <option value="blue">Blue</option>
@@ -52,26 +52,28 @@
 
                             <div class="form-group">
                                 <label for="name">8 Product Description</label>
-                                <textarea type="text" class="form-control" name="productDescription"></textarea>
+                                <textarea type="text" class="form-control" name="productDescription" ><% if (editing) { %><%= product.productDescription %><% } %></textarea>
                             </div>
 
                             <div class="form-group">
                                 <label for="productFeature" class="form-group">9 Product Feature</label>
                                 <br>    
                                 <label for="featureName">Feature Name</label><br>
-                                    <input  type="text" name="featureName" ><br>
-                                    <label for="featureValue">Feature Value</label><br>
-                                    <input type="text" name="featureValue"><br>
+                                    <input  type="text" name="featureName" value="<% if (editing) { %><%= product.productFeatures[0].productName %><% } %>"><br>
+                                    <label for="featureValue" >Feature Value</label><br>
+                                    <input type="text" name="featureValue" value="<% if (editing) { %><%= product.productFeatures[0].featureValue %><% } %>"><br>
                                     <br>
                             </div>
-
                             <div class="form-check" >
                                 <label for="name">10 Product Status</label>
                                 <div class="checkbox">
-                                    <label><input name="productStatus" type="checkbox" value="available">Available</label>
+                                    <label><input name="productStatus" type="checkbox" value="available" checked>Available</label>
                                 </div>
                             </div>
-                            
+                            <% if (editing) { %>
+                            <input type="hidden" value="<%=productId%>" name="productId" />
+                            <% } %>
+                            <button class="btn btn-primary" type="submit"><% if (editing) { %>Edit Product<% } else { %>Add Product<% } %></button>
                         </div>
                     </div>
                 </form>
